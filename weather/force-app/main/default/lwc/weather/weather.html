@@ -1,0 +1,32 @@
+<template>
+    <div class="background">
+        <div class="search-container">
+            <input type="text" placeholder="Enter Location..." class="search-bar" value={location} onchange={handleLocationChange} />
+            <button class="search-button" onclick={handleSearch}>
+                <img src="https://img.icons8.com/?size=100&id=12773&format=png&color=000000" alt="Search" class="search-icon" />
+            </button>
+        </div>
+
+        <template if:true={weatherData}>
+            <div class="weather-info">
+                <div class="icon">
+                    <img src={weatherData.icon} alt="Weather Icon" />
+                </div>
+                <div class="temperature">
+                    {weatherData.temp_c}°C
+                </div>
+                <div class="location-name">
+                    {weatherData.name}
+                </div>
+                <div class="details">
+                    <span class="humidity">Humidity: {weatherData.humidity}%</span>
+                    <span class="wind-speed">Wind Speed: {weatherData.wind_kph} km/h</span>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={error}>
+            <p class="error-message">{error}</p>
+        </template>
+    </div>
+</template>
